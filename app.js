@@ -54,7 +54,7 @@ const getWinner = (cChoice, pChoice) =>
 //   return RESULT_COMPUTER_WINS;
 // }
 
-startGameBtn.addEventListener('click', function() {
+startGameBtn.addEventListener('click', () => {
   if (gameIsRunning) {
     return;
   }
