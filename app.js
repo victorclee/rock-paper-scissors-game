@@ -83,22 +83,26 @@ startGameBtn.addEventListener('click', () => {
 
 // Not related to the game
 
-const sumUp = (...numbers) => {
+const sumUp = (a, b, ...numbers) => {
+  const validateNumber = number => {
+    return isNaN(number) ? 0 : number;
+  };
   let sum = 0;
   for (const num of numbers) {
-    sum += num;
+    sum += validateNumber(num);
   }
   return sum;
 };
 
 const subtractUp = function() {
   let sum = 0;
-  for (const num of arguments) { // Don't use the argument variable. Too much magic. Might be confusing for others.
+  for (const num of arguments) {
+    // Don't use the argument variable. Too much magic. Might be confusing for others.
     sum -= num;
   }
-  return sum;  
+  return sum;
 };
 
 console.log(sumUp(1, 5, 10, -3, 6, 10));
-console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
+console.log(sumUp(1, 5, 10, -3, 6, 1, 'tt', 0, 25, 88));
 console.log(subtractUp(1, 10, 15, 20));
