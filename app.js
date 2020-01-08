@@ -95,7 +95,7 @@ const combine = (resultHandler, operation, ...numbers) => {
       sum -= validateNumber(num);
     }
   }
-  resultHandler(sum, 'The result after adding all numbers is');
+  resultHandler(sum);
 };
 
 // const subtractUp = (resultHandler, ...numbers) => {
