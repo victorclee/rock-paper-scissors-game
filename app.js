@@ -83,30 +83,61 @@ startGameBtn.addEventListener('click', () => {
 
 // Not related to the game
 
-const sumUp = (resultHandler, ...numbers) => {
+const combine = (resultHandler, operation, ...numbers) => {
   const validateNumber = number => {
     return isNaN(number) ? 0 : number;
   };
   let sum = 0;
   for (const num of numbers) {
-    sum += validateNumber(num);
+    if (operation === 'ADD') {
+      sum += validateNumber(num);
+    } else {
+      sum -= validateNumber(num);
+    }
   }
-  resultHandler(sum);
+  resultHandler(sum, 'The result after adding all numbers is');
 };
 
-const subtractUp = function() {
-  let sum = 0;
-  for (const num of arguments) {
-    // Don't use the argument variable. Too much magic. Might be confusing for others.
-    sum -= num;
-  }
-  return sum;
+// const subtractUp = (resultHandler, ...numbers) => {
+//   let sum = 0;
+//   for (const num of numbers) {
+//     // Don't use the argument variable. Too much magic. Might be confusing for others.
+//     sum -= num;
+//   }
+//   resultHandler(sum);
+// };
+
+const showResult = (messageText, result) => {
+  alert(messageText + ' ' + result);
 };
 
-const showResult = (result) => {
-  alert('The result after adding up all the numbers is ' + result);
-};
-
-sumUp(showResult, 1, 5, 10, -3, 6, 10);
-sumUp(showResult, 1, 5, 10, -3, 6, 1, 'tt', 0, 25, 88);
-console.log(subtractUp(1, 10, 15, 20));
+combine(
+  showResult.bind(this, 'The result after adding all the numbers is:'),
+  'ADD',
+  1,
+  5,
+  'fsad',
+  -3,
+  6,
+  10
+);
+combine(
+  showResult.bind(this, 'The result after adding all the numbers is:'),
+  'ADD',
+  1,
+  5,
+  10,
+  -3,
+  6,
+  10,
+  25,
+  88
+);
+combine(
+  showResult.bind(this, 'The result after subtracting all the numbers is:'),
+  'SUBTRACT',
+  1,
+  10,
+  15,
+  20
+);
